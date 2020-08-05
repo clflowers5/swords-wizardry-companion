@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  next-app:
+    container_name: next_swords_wizardry_spells_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./pages:/usr/src/app/pages
+      - ./public:/usr/src/app/public
+      - ./components:/usr/src/app/components
+      - ./styles:/usr/src/app/styles
+      - ./posts:/usr/src/app/posts
+      - ./lib:/usr/src/app/lib
+    command: npm run dev 
