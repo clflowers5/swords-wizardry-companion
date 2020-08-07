@@ -1,5 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+Madness, pure madness!
 
-* Dev
-`sudo docker-compose up`
-`sudo docker-compose stop`
+Integrating with Vercel. It's kind of nice.
