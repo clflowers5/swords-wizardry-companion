@@ -10,7 +10,7 @@ function Layout({ children }) {
         <meta name="description" content="Swords & Wizardry Spells" />
       </Head>
       <h1 className="font-bold text-center text-2xl">
-        Swords & Wizardry Spell List
+        Swords & Wizardry Spell Companion
       </h1>
       <main className="mt-4">{children}</main>
     </div>
