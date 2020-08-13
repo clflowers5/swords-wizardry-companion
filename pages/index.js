@@ -6,9 +6,9 @@ import Fuse from "fuse.js";
 import Layout from "components/layout";
 // Hooks
 import useDebounce from "hooks/use-debounce";
+import useSpellMap from "hooks/use-spell-map";
 // Data Providers
 import { getSpells } from "lib/spells/spells";
-import useSpellMap from "../hooks/use-spell-map";
 
 const SpellList = React.memo(function SpellList({ spellList }) {
   return (
