@@ -16,7 +16,11 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.6",
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.8",
     "postcss-preset-env": "^6.7.0",
+    "prop-types": "^15.7.2",
     "tailwindcss": "^1.6.2"
   }
 }
