@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import Head from "next/head";
 
 function Layout({ children }) {
@@ -12,9 +14,13 @@ function Layout({ children }) {
       <h1 className="font-bold text-center text-2xl">
         Swords & Wizardry Spell Companion
       </h1>
-      <main className="mt-4">{children}</main>
+      <main className="mt-4 pl-2 pr-2 sm:pl-0 sm:pr-0">{children}</main>
     </div>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Layout;
