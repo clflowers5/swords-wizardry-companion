@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import Head from "next/head";
-import GoogleAnalyticsScript from './google-analytics-script';
+
+import GoogleAnalyticsScript from 'components/google-analytics-script';
 
 function Layout({ children }) {
   return (
