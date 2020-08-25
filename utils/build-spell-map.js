@@ -1,13 +1,7 @@
-import { useBookmarks as useSpellBookmarks } from "hooks/use-spell-bookmark";
-
 const spellMap = {};
 
-function buildSpellMapKey({
-  profession = "all",
-  level = "all",
-  favoritesOnly = "false",
-} = {}) {
-  return `profession-${profession}-level-${level}-favoritesOnly-${favoritesOnly}`;
+function buildSpellMapKey({ profession = "all", level = "all" } = {}) {
+  return `profession-${profession}-level-${level}`;
 }
 
 function filterSpells({
@@ -27,7 +21,6 @@ function filterSpells({
 
         if (favoritesOnly) {
           const isBookmarked = bookmarks && bookmarks.includes(spell.title);
-          console.log('checking...', isBookmarked, bookmarks, spell.title);
           return isProfessionMatch && isLevelMatch && isBookmarked;
         } else {
           return isProfessionMatch && isLevelMatch;
@@ -39,21 +32,40 @@ function filterSpells({
   });
 }
 
-function useSpellMap({ spellList, profession, level, favoritesOnly }) {
-  const bookmarks = useSpellBookmarks();
-  const key = buildSpellMapKey({ profession, level, favoritesOnly });
+function buildSpellMap({
+  bookmarks,
+  spellList,
+  profession,
+  level,
+  favoritesOnly,
+}) {
+  const key = buildSpellMapKey({ profession, level });
 
-  if (!spellMap[key]) {
-    spellMap[key] = filterSpells({
+  let result;
+
+  if (favoritesOnly) {
+    // can't cache favorites since they can change at runtime
+    result = filterSpells({
       spellList,
       profession,
       level,
       favoritesOnly,
       bookmarks,
     });
+  } else if (spellMap[key]) {
+    result = spellMap[key];
+  } else {
+    result = filterSpells({
+      spellList,
+      profession,
+      level,
+      favoritesOnly,
+      bookmarks,
+    });
+    spellMap[key] = result;
   }
 
-  return spellMap[key];
+  return result;
 }
 
-export default useSpellMap;
+export default buildSpellMap;
