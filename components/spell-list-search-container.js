@@ -3,7 +3,10 @@ import Fuse from "fuse.js";
 import PropTypes from "prop-types";
 
 // Components
+import CheckBox from "components/inputs/checkbox";
+import Input from "components/inputs/input";
 import Layout from "components/layout";
+import Select from "components/inputs/select";
 import SpellList from "components/spell-list";
 
 // Hooks
@@ -13,9 +16,9 @@ import useDebounce from "hooks/use-debounce";
 import buildSpellMap from "utils/build-spell-map";
 
 function SpellListSearchContainer({
-  spellList,
   bookmarkedSpells,
   setBookmarkedSpells,
+  spellList,
 }) {
   const fuseRef = useRef(null);
   const [searchResults, setSearchResults] = useState([]);
@@ -42,7 +45,7 @@ function SpellListSearchContainer({
 
   useEffect(
     function setupFuse() {
-      const spells = filteredSpellList || spellList;
+      const spells = filteredSpellList.length ? filteredSpellList : spellList;
       fuseRef.current = new Fuse(spells, {
         keys: ["title", "learnedBy.className"],
         minMatchCharLength: 2,
@@ -111,59 +114,37 @@ function SpellListSearchContainer({
     <Layout>
       <form onSubmit={handleFormSubmit} className="border-b-2 pb-4 mb-4">
         <div>
-          <label>
-            <span>Spell Name</span>
-            <input
-              className="transition-colors duration-100 ease-in-out focus:outline-none border border-transparent focus:bg-white focus:border-gray-500 placeholder-gray-600 rounded-lg bg-white border border-gray-200 py-2 pr-4 px-3 block w-full appearance-none leading-normal ds-input"
-              onChange={handleInputChange}
-              placeholder="Search for spell"
-            />
-          </label>
+          <Input
+            label="Spell Name"
+            onChange={handleInputChange}
+            placeholder="Search for spell"
+          />
         </div>
 
         <div className="flex">
           <div className="mt-2 flex-1 mr-1">
-            <label>
-              <span>Class</span>
-              <select
-                className="transition-colors duration-100 ease-in-out focus:outline-none border border-transparent focus:bg-white focus:border-gray-500 placeholder-gray-600 rounded-lg bg-white border border-gray-200 py-2 pr-4 px-3 block w-full appearance-none leading-normal ds-input"
-                onChange={handleClassChange}
-              >
-                <option value="all">All</option>
-                <option value="cleric">Cleric</option>
-                <option value="druid">Druid</option>
-                <option value="magic-user">Magic-User</option>
-              </select>
-            </label>
+            <Select label="Class" onChange={handleClassChange}>
+              <option value="all">All</option>
+              <option value="cleric">Cleric</option>
+              <option value="druid">Druid</option>
+              <option value="magic-user">Magic-User</option>
+            </Select>
           </div>
 
           <div className="mt-2 flex-1 ml-1">
-            <label>
-              <span>Level</span>
-              <select
-                className="transition-colors duration-100 ease-in-out focus:outline-none border border-transparent focus:bg-white focus:border-gray-500 placeholder-gray-600 rounded-lg bg-white border border-gray-200 py-2 pr-4 px-3 block w-full appearance-none leading-normal ds-input"
-                onChange={handleLevelChange}
-              >
-                <option value="all">All</option>
-                {Array.from(new Array(21)).map((_, index) => (
-                  <option key={index} value={String(index + 1)}>
-                    {index + 1}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <Select label="Level" onChange={handleLevelChange}>
+              <option value="all">All</option>
+              {Array.from(new Array(21)).map((_, index) => (
+                <option key={index} value={String(index + 1)}>
+                  {index + 1}
+                </option>
+              ))}
+            </Select>
           </div>
         </div>
 
         <div className="ml-1 mt-2">
-          <label>
-            <input
-              type="checkbox"
-              className="mr-2"
-              onChange={handleFavoritesChange}
-            />
-            <span>Favorites Only</span>
-          </label>
+          <CheckBox label="Favorites Only" onChange={handleFavoritesChange} />
         </div>
       </form>
 
