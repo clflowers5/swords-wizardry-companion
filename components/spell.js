@@ -1,19 +1,28 @@
+import { useCallback } from "react";
 import PropTypes from "prop-types";
 
 // Components
 import BookmarkIcon from "components/icons/bookmark";
 
-// Hooks
-import useSpellBookmark from 'hooks/use-spell-bookmark';
-
-function Spell({ title, learnedBy, range, duration, description, table }) {
-  const { isBookmarked, onBookmarkClick } = useSpellBookmark(title);
+function Spell({
+  description,
+  duration,
+  isBookmarked,
+  learnedBy,
+  onBookmarkClick,
+  range,
+  table,
+  title,
+}) {
+  const handleBookmarkClick = useCallback(() => {
+    onBookmarkClick(title);
+  }, [onBookmarkClick, title]);
   return (
     <div
       className="bg-white rounded overflow-hidden shadow-md border-solid border border-gray-200 p-3 mb-4"
       key={title}
     >
-      <button className="float-right" onClick={onBookmarkClick}>
+      <button className="float-right" onClick={handleBookmarkClick}>
         <BookmarkIcon filled={isBookmarked} />
       </button>
 
@@ -50,12 +59,14 @@ function Spell({ title, learnedBy, range, duration, description, table }) {
 }
 
 Spell.propTypes = {
-  title: PropTypes.string.isRequired,
-  learnedBy: PropTypes.arrayOf(PropTypes.object).isRequired,
-  range: PropTypes.string,
-  duration: PropTypes.string,
   description: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  duration: PropTypes.string,
+  isBookmarked: PropTypes.bool,
+  learnedBy: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onBookmarkClick: PropTypes.func,
+  range: PropTypes.string,
   table: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 export default Spell;
