@@ -22,7 +22,7 @@ function Spell({
       className="bg-white rounded overflow-hidden shadow-md border-solid border border-gray-200 p-3 mb-4"
       key={title}
     >
-      <button className="float-right" onClick={handleBookmarkClick}>
+      <button className="float-right" onClick={handleBookmarkClick} aria-label="Bookmark Spell">
         <BookmarkIcon filled={isBookmarked} />
       </button>
 
