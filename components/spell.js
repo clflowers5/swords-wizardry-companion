@@ -26,7 +26,7 @@ function Spell({
         <BookmarkIcon filled={isBookmarked} />
       </button>
 
-      <h5 className="font-medium underline">{title}</h5>
+      <div className="font-medium underline">{title}</div>
 
       <div>
         <div>
