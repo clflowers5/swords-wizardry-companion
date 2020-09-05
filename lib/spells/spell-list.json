@@ -10,7 +10,7 @@
     "range": "N/A",
     "duration": "Until completed or insanity",
     "description": [
-      "This spell summons a powerful creature from the elemental planes of air, to fetch and return one thing (or creature) to the caster. Only A creature with a Strength of 18 can fight its way from the servant’s grasp, and even then the chance is not likely to be greater than 50%. The servant can carry up to 500 pounds in weight. An aerial servant has the following attributes: "
+      "This spell summons a powerful creature from the elemental planes of air, to fetch and return one thing (or creature) to the caster. Only A creature with a Strength of 18 can fight its way from the servant’s grasp, and even then the chance is not likely to be greater than 50%. The servant can carry up to 500 pounds in weight. An aerial servant has the following attributes: <ul style=\"list-style: disc; margin-left: 2rem;\"><li><strong>HD</strong> 16</li><li><strong>AC</strong> 3 [16]</li><li><strong>Atk Bonus</strong> +17</li><li><strong>Atk</strong> 1 (4d4)</li><li><strong>Move</strong> 240 ft</li>"
     ]
   },
   {
