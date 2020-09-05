@@ -30,7 +30,7 @@ function Spell({
 
       <div>
         <div>
-          <span>Learned by:</span>
+          <span>Spell Level:</span>
           {learnedBy.map((profession, index) => (
             <span key={profession.className}>
               {index > 0 ? ", " : " "}
@@ -46,7 +46,7 @@ function Spell({
 
       <div className="mt-3">
         {description.map((entry, index) => (
-          <div key={index}>{entry}</div>
+          <div key={index} dangerouslySetInnerHTML={{ __html: entry }} />
         ))}
       </div>
 
