@@ -1460,7 +1460,7 @@
     "range": "150 feet",
     "duration": "Immediate",
     "description": [
-      "A magical missile flies where the caster directs, with a range of 150 feet. At the Referee’s discretion, this spell may have one of two effects: <ol class=\"list-decimal ml-8\"><li>The Magic-User must roll to hit the target with a +1 bonus to the roll. The missile inflicts 1d6+1 points of damage.</li><li>The missile hits automatically, doing 1d4+1 points of damage.</li></ol><p>In either case, the Magic-User casts an additional two missiles for every 5 levels of experience. Thus, at 5th level, the caster is able to hurl 3 magic missiles, and 5 missiles at 10th level.</p>"
+      "A magical missile flies where the caster directs, with a range of 150 feet. At the Referee’s discretion, this spell may have one of two effects: <ol style=\"list-style: decimal; margin-left: 2rem;\"><li>The Magic-User must roll to hit the target with a +1 bonus to the roll. The missile inflicts 1d6+1 points of damage.</li><li>The missile hits automatically, doing 1d4+1 points of damage.</li></ol><p>In either case, the Magic-User casts an additional two missiles for every 5 levels of experience. Thus, at 5th level, the caster is able to hurl 3 magic missiles, and 5 missiles at 10th level.</p>"
     ]
   },
   {
