@@ -45,7 +45,8 @@ function SpellListSearchContainer({
 
   useEffect(
     function setupFuse() {
-      const spells = filteredSpellList.length ? filteredSpellList : spellList;
+      // todo: we can probably clean this up
+      const spells = favoritesOnly ? filteredSpellList : spellList;
       fuseRef.current = new Fuse(spells, {
         keys: ["title", "learnedBy.className"],
         minMatchCharLength: 2,
@@ -109,6 +110,9 @@ function SpellListSearchContainer({
     175,
     [searchValue]
   );
+
+  console.log('searchResults', searchResults);
+  console.log('filtered', filteredSpellList);
 
   return (
     <Layout>
