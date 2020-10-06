@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
+import debug from 'debug';
+
+const log = debug('bookmarked-spells-container');
 
 function BookmarkedSpellsContainer({ children }) {
   const [bookmarkedSpells, setInternalBookmarkedSpells] = useState();
@@ -7,7 +10,12 @@ function BookmarkedSpellsContainer({ children }) {
     let bookmarks = [];
     const stringSpellArray = localStorage.getItem("bookmarked-spells");
     if (stringSpellArray) {
-      bookmarks = JSON.parse(stringSpellArray);
+      try {
+        bookmarks = JSON.parse(stringSpellArray);
+        log('Parsed bookmarked-spells', bookmarks);
+      } catch (e) {
+        log('Error: Failed to parse bookmarked-spells', e, stringSpellArray);
+      }
     }
     setInternalBookmarkedSpells(bookmarks);
   }, []);
@@ -17,7 +25,10 @@ function BookmarkedSpellsContainer({ children }) {
     setInternalBookmarkedSpells(bookmarkedSpells);
   }, []);
 
-  return children({ bookmarkedSpells, setBookmarkedSpells });
+  // Prevent premature renders before above useEffect resolves. This should be a useLayoutEffect, but SSR issues.
+  return bookmarkedSpells
+    ? children({ bookmarkedSpells, setBookmarkedSpells })
+    : null;
 }
 
 export default BookmarkedSpellsContainer;
