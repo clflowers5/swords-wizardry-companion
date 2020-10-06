@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Fuse from "fuse.js";
 import PropTypes from "prop-types";
+import debug from "debug";
 
 // Components
 import CheckBox from "components/inputs/checkbox";
@@ -14,6 +15,8 @@ import useDebounce from "hooks/use-debounce";
 
 // Utils
 import buildSpellMap from "utils/build-spell-map";
+
+const log = debug('spell-list-search-container');
 
 function SpellListSearchContainer({
   bookmarkedSpells,
@@ -45,8 +48,7 @@ function SpellListSearchContainer({
 
   useEffect(
     function setupFuse() {
-      const spells = filteredSpellList.length ? filteredSpellList : spellList;
-      fuseRef.current = new Fuse(spells, {
+      fuseRef.current = new Fuse(filteredSpellList, {
         keys: ["title", "learnedBy.className"],
         minMatchCharLength: 2,
         threshold: 0.4,
@@ -109,6 +111,9 @@ function SpellListSearchContainer({
     175,
     [searchValue]
   );
+
+  log('Rendering searchResults', searchResults);
+  log('Rendering filteredSpellList', filteredSpellList);
 
   return (
     <Layout>
