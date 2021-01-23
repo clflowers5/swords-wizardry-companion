@@ -20,12 +20,13 @@ const log = debug('spell-list-search-container');
 
 function SpellListSearchContainer({
   bookmarkedSpells,
+  searchValue: initialSearchValue,
   setBookmarkedSpells,
   spellList,
 }) {
   const fuseRef = useRef(null);
   const [searchResults, setSearchResults] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState(initialSearchValue);
   const [professionFilter, setProfessionFilter] = useState(null);
   const [levelFilter, setLevelFilter] = useState(null);
   const [favoritesOnly, setFavoritesOnly] = useState(false);
@@ -104,8 +105,12 @@ function SpellListSearchContainer({
   useDebounce(
     () => {
       if (fuseRef.current) {
-        const results = fuseRef.current.search(searchValue);
-        setSearchResults(results);
+        if (searchValue) {
+          const results = fuseRef.current.search(searchValue);
+          setSearchResults(results);
+        } else {
+          setSearchResults([]);
+        }
       }
     },
     175,
@@ -123,6 +128,7 @@ function SpellListSearchContainer({
             label="Spell Name"
             onChange={handleInputChange}
             placeholder="Search for spell"
+            value={searchValue}
           />
         </div>
 
@@ -173,9 +179,10 @@ function SpellListSearchContainer({
 }
 
 SpellListSearchContainer.propTypes = {
-  spellList: PropTypes.arrayOf(PropTypes.object),
   bookmarkedSpells: PropTypes.arrayOf(PropTypes.string),
+  searchValue: PropTypes.string,
   setBookmarkedSpells: PropTypes.func,
+  spellList: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default SpellListSearchContainer;
