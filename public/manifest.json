@@ -1,0 +1,8 @@
+{
+  "name": "Swords & Wizardry Spell Companion",
+  "short_name": "S&W Spells",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#e2e8f0"
+}

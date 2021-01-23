@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 
 import GoogleAnalyticsScript from "components/google-analytics-script";
+import PWAMetaTags from "./pwa-meta-tags";
 
 function Layout({ children }) {
   return (
@@ -11,6 +12,7 @@ function Layout({ children }) {
         <title>Swords & Wizardry Spells</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Swords & Wizardry Spells" />
+        <PWAMetaTags />
         <GoogleAnalyticsScript />
       </Head>
       <h1 className="font-bold text-center text-2xl">
