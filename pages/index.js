@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useRouter } from "next/router";
 
 // Components
+import AppHead from "components/app-head";
 import SpellListSearchContainer from "components/spell-list-search-container";
 
 // Contexts
@@ -15,16 +16,19 @@ function Home({ spellList }) {
   const { query } = router.query;
 
   return (
-    <BookmarkedSpellsContainer>
-      {({ bookmarkedSpells, setBookmarkedSpells }) => (
-        <SpellListSearchContainer
-          bookmarkedSpells={bookmarkedSpells}
-          searchValue={query}
-          setBookmarkedSpells={setBookmarkedSpells}
-          spellList={spellList}
-        />
-      )}
-    </BookmarkedSpellsContainer>
+    <>
+      <AppHead />
+      <BookmarkedSpellsContainer>
+        {({ bookmarkedSpells, setBookmarkedSpells }) => (
+          <SpellListSearchContainer
+            bookmarkedSpells={bookmarkedSpells}
+            searchValue={query}
+            setBookmarkedSpells={setBookmarkedSpells}
+            spellList={spellList}
+          />
+        )}
+      </BookmarkedSpellsContainer>
+    </>
   );
 }
 
