@@ -4,24 +4,26 @@ function AppHead() {
   return (
     <Head>
       <title>Swords & Wizardry Spells</title>
-      <link rel="manifest" href="manifest.json"/>
-      <link rel="icon" href="/favicon.ico"/>
-      <meta name="description" content="Swords & Wizardry Spell Companion"/>
-      <meta name="mobile-web-app-capable" content="yes"/>
-      <meta name="apple-mobile-web-app-capable" content="yes"/>
-      <meta name="application-name" content="S&W Spells"/>
-      <meta name="apple-mobile-web-app-title" content="S&W Spells"/>
-      <meta name="theme-color" content="#e2e8f0"/>
-      <meta name="msapplication-navbutton-color" content="#e2e8f0"/>
+      <link rel="manifest" href="manifest.json" />
+      <link rel="icon" href="/favicon.ico" />
+      <meta name="description" content="Swords & Wizardry Spell Companion" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="application-name" content="S&W Spells" />
+      <meta name="apple-mobile-web-app-title" content="S&W Spells" />
+      <meta name="theme-color" content="#e2e8f0" />
+      <meta name="msapplication-navbutton-color" content="#e2e8f0" />
       <meta
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"
       />
-      <meta name="msapplication-starturl" content="/"/>
+      <meta name="msapplication-starturl" content="/" />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
 
       {/* Global site tag (gtag.js) - Google Analytics */}
       <script
