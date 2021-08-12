@@ -1,6 +1,6 @@
 {
-  "name": "Swords & Wizardry Spell Companion",
-  "short_name": "S&W Spells",
+  "name": "Swords & Wizardry Companion",
+  "short_name": "S&W Companion",
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",

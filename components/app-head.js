@@ -3,14 +3,14 @@ import Head from "next/head";
 function AppHead() {
   return (
     <Head>
-      <title>Swords & Wizardry Spells</title>
+      <title>Swords & Wizardry Companion</title>
       <link rel="manifest" href="manifest.json" />
       <link rel="icon" href="/favicon.ico" />
-      <meta name="description" content="Swords & Wizardry Spell Companion" />
+      <meta name="description" content="Swords & Wizardry Companion" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="application-name" content="S&W Spells" />
-      <meta name="apple-mobile-web-app-title" content="S&W Spells" />
+      <meta name="application-name" content="S&W Companion" />
+      <meta name="apple-mobile-web-app-title" content="S&W Companion" />
       <meta name="theme-color" content="#e2e8f0" />
       <meta name="msapplication-navbutton-color" content="#e2e8f0" />
       <meta
