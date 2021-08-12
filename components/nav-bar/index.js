@@ -1,12 +1,13 @@
-import React, {Children} from "react";
+import React, { Children } from "react";
+import PropTypes from "prop-types";
 import Link from "next/link";
-import { useRouter } from "next/router"
+import { useRouter } from "next/router";
 
 // todo: cf - hella cleanup
 const PageLink = ({ children, ...props }) => {
-  const { asPath } = useRouter()
-  const child = Children.only(children)
-  const childClassName = child.props.className || ''
+  const { asPath } = useRouter();
+  const child = Children.only(children);
+  const childClassName = child.props.className || "";
 
   // pages/index.js will be matched via props.href
   // pages/about.js will be matched via props.href
@@ -14,7 +15,7 @@ const PageLink = ({ children, ...props }) => {
   const className =
     asPath === props.href || asPath === props.as
       ? `${childClassName} font-extrabold`.trim()
-      : childClassName
+      : childClassName;
 
   return (
     <Link {...props}>
@@ -22,11 +23,16 @@ const PageLink = ({ children, ...props }) => {
         className: className || null,
       })}
     </Link>
-  )
-}
+  );
+};
+
+PageLink.propTypes = {
+  children: PropTypes.node,
+  href: PropTypes.string,
+  as: PropTypes.string,
+};
 
 function NavBar() {
-
   return (
     <nav>
       <ul>
