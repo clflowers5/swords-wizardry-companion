@@ -60,8 +60,8 @@ function LootXpCalc() {
       {/* todo: cf - extract to form component */}
 
       <form className='border-b-2 pb-4 mb-4' onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex">
-          <div className="flex-2 m-2">
+        <div className="flex flex-wrap">
+          <div className="w-full m-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -71,7 +71,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="flex-1 m-2">
+          <div className="m-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -81,7 +81,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="flex-1 m-2">
+          <div className="m-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -91,7 +91,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="flex-1 m-2">
+          <div className="m-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
