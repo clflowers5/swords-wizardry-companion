@@ -57,4 +57,5 @@ function useBookmarks() {
   return bookmarks;
 }
 
+// todo: why are these named different? Usage different?
 export { useSpellBookmark as default, useBookmarks };

@@ -6,18 +6,19 @@ function buildSpellMapKey({ profession = "all", level = "all" } = {}) {
 
 function filterSpells({
   spellList,
-  profession,
-  level,
+  profession: filteredProfession,
+  level: filteredLevel,
   favoritesOnly,
   bookmarks,
 }) {
   return spellList.filter((spell) => {
-    if (profession || level || favoritesOnly) {
+    const filtersAreApplied = filteredProfession || filteredLevel || favoritesOnly;
+    if (filtersAreApplied) {
       return spell.learnedBy.some((entry) => {
         const isProfessionMatch =
-          !profession ||
-          entry.className.toLowerCase() === profession.toLowerCase();
-        const isLevelMatch = !level || String(entry.level) === String(level);
+          !filteredProfession ||
+          entry.className.toLowerCase() === filteredProfession.toLowerCase();
+        const isLevelMatch = !filteredLevel || String(entry.level) === String(filteredLevel);
 
         if (favoritesOnly) {
           const isBookmarked = bookmarks && bookmarks.includes(spell.title);
