@@ -72,7 +72,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="mt-2">
+          <div className="mt-2 mr-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -82,7 +82,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="mt-2">
+          <div className="mt-2 mr-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -92,7 +92,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="mt-2">
+          <div className="mt-2 mr-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}

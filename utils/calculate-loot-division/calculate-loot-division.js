@@ -1,3 +1,7 @@
+function toTwoDecimals(input) {
+  return Number(Math.trunc(input * 100) / 100);
+}
+
 function calculateLootDivision({
   totalLoot = 0,
   fullShares = 0,
@@ -23,12 +27,12 @@ function calculateLootDivision({
     quarterResult = fullResult * 0.25;
   }
 
-  const full = Number(Math.trunc(fullResult * 100) / 100);
-  const totalFull = full * fullShares;
-  const half = Number(Math.trunc(halfResult * 100) / 100);
-  const totalHalf = half * halfShares;
-  const quarter = Number(Math.trunc(quarterResult * 100) / 100);
-  const totalQuarter = quarter * quarterShares;
+  const full = toTwoDecimals(fullResult);
+  const totalFull = toTwoDecimals(full * fullShares);
+  const half = toTwoDecimals(halfResult);
+  const totalHalf = toTwoDecimals(half * halfShares);
+  const quarter = toTwoDecimals(quarterResult);
+  const totalQuarter = toTwoDecimals(quarter * quarterShares);
 
   return {
     full,
