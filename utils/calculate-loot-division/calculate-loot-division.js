@@ -8,7 +8,7 @@ function calculateLootDivision({
   let halfResult = 0;
   let quarterResult = 0;
 
-  let calculatedShare = fullShares + (0.5 * halfShares) + (0.25 * quarterShares);
+  let calculatedShare = fullShares + 0.5 * halfShares + 0.25 * quarterShares;
 
   if (fullShares > 0) {
     fullResult = totalLoot / calculatedShare;
@@ -23,10 +23,20 @@ function calculateLootDivision({
     quarterResult = fullResult * 0.25;
   }
 
+  const full = Number(Math.trunc(fullResult * 100) / 100);
+  const totalFull = full * fullShares;
+  const half = Number(Math.trunc(halfResult * 100) / 100);
+  const totalHalf = half * halfShares;
+  const quarter = Number(Math.trunc(quarterResult * 100) / 100);
+  const totalQuarter = quarter * quarterShares;
+
   return {
-    full: Number(Math.trunc(fullResult * 100) / 100),
-    half: Number(Math.trunc(halfResult * 100) / 100),
-    quarter: Number(Math.trunc(quarterResult * 100) / 100),
+    full,
+    half,
+    quarter,
+    totalFull,
+    totalHalf,
+    totalQuarter,
   };
 }
 

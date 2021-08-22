@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import Input from "components/inputs/input";
 import calculateLootDivision from "../utils/calculate-loot-division";
+import Button from "../components/inputs/button";
 
 const schema = yup.object().shape({
   totalLoot: yup.number("Required").typeError("Required").required("Required"),
@@ -38,7 +39,7 @@ FormInput.propTypes = {
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   label: PropTypes.node,
-}
+};
 
 function LootXpCalc() {
   const [lootDivision, setLootDivision] = useState(null);
@@ -59,9 +60,9 @@ function LootXpCalc() {
     <Layout>
       {/* todo: cf - extract to form component */}
 
-      <form className='border-b-2 pb-4 mb-4' onSubmit={handleSubmit(onSubmit)}>
+      <form className="border-b-2 pb-4 mb-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-wrap">
-          <div className="w-full m-2">
+          <div className="w-full mt-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -71,7 +72,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="m-2">
+          <div className="mt-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -81,7 +82,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="m-2">
+          <div className="mt-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -91,7 +92,7 @@ function LootXpCalc() {
             />
           </div>
 
-          <div className="m-2">
+          <div className="mt-2">
             <FormInput
               rhfControl={control}
               defaultValue={0}
@@ -102,26 +103,28 @@ function LootXpCalc() {
           </div>
         </div>
 
-        <input type="submit" />
+        <div className="mt-2">
+          <Button>Submit</Button>
+        </div>
       </form>
 
       {lootDivision && (
-        <div>
-          <div>
-            <span>Full Share:</span>
-            {' '}
-            <span>{lootDivision.full}</span>
-          </div>
-          <div>
-            <span>Half Share:</span>
-            {' '}
-            <span>{lootDivision.half}</span>
-          </div>
-          <div>
-            <span>Quarter Share:</span>
-            {' '}
-            <span>{lootDivision.quarter}</span>
-          </div>
+        <div className="grid grid-flow-row grid-cols-3 grid-rows-4">
+          <div className="font-bold underline">Share Type</div>
+          <div className="font-bold underline">Per Share</div>
+          <div className="font-bold underline">Total</div>
+
+          <div>Full Share:</div>
+          <div>{lootDivision.full}</div>
+          <div>{lootDivision.totalFull}</div>
+
+          <div>Half Share:</div>
+          <div>{lootDivision.half}</div>
+          <div>{lootDivision.totalHalf}</div>
+
+          <div>Quarter Share:</div>
+          <div>{lootDivision.quarter}</div>
+          <div>{lootDivision.totalQuarter}</div>
         </div>
       )}
     </Layout>

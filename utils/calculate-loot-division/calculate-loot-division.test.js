@@ -27,7 +27,7 @@ describe("calculateLootDivision", () => {
       { full: 1, half: 0, quarter: 0 },
     ],
   ])("should divide full shares correctly for %s to %s", (input, expected) => {
-    expect(calculateLootDivision(input)).toEqual(expected);
+    expect(calculateLootDivision(input)).toEqual(expect.objectContaining(expected));
   });
 
   it.each([
@@ -56,7 +56,7 @@ describe("calculateLootDivision", () => {
       { full: 1.96, half: 0.98, quarter: 0 },
     ],
   ])("should divide half shares correctly for %s to %s", (input, expected) => {
-    expect(calculateLootDivision(input)).toEqual(expected);
+    expect(calculateLootDivision(input)).toEqual(expect.objectContaining(expected));
   });
 
   it.each([
@@ -69,7 +69,7 @@ describe("calculateLootDivision", () => {
       { full: 66.66, half: 0, quarter: 16.66 },
     ],
   ])("should divide quarter shares correctly for %s to %s", (input, expected) => {
-    expect(calculateLootDivision(input)).toEqual(expected);
+    expect(calculateLootDivision(input)).toEqual(expect.objectContaining(expected));
   });
 
 
@@ -83,6 +83,6 @@ describe("calculateLootDivision", () => {
       { full: 23.52, half: 11.76, quarter: 5.88 },
     ],
   ])("should divide shares correctly random cases: %s to %s", (input, expected) => {
-    expect(calculateLootDivision(input)).toEqual(expected);
+    expect(calculateLootDivision(input)).toEqual(expect.objectContaining(expected));
   });
 });
